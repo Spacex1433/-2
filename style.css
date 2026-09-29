@@ -1,0 +1,264 @@
+/* =========================
+   ОСНОВНЫЕ НАСТРОЙКИ
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #111;
+    color: #eee;
+    line-height: 1.6;
+}
+.container {
+    width: min(1100px, 90%);
+    margin: 0 auto;
+}
+/* =========================
+   ШАПКА
+========================= */
+.header {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.75),
+            rgba(0, 0, 0, 0.9)
+        ),
+        url("images/group.jpg");
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #333;
+}
+.subtitle {
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+.header h1 {
+    font-size: clamp(42px, 8vw, 90px);
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+}
+.description {
+    color: #bbb;
+    font-size: 18px;
+}
+/* =========================
+   ВВЕДЕНИЕ
+========================= */
+.intro {
+    text-align: center;
+    padding: 80px 0 50px;
+}
+.intro h2,
+.gallery-section h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+.intro p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #aaa;
+}
+/* =========================
+   КАРТОЧКА СТУДЕНТА
+========================= */
+.student-card {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 50px;
+    align-items: center;
+    margin: 50px 0;
+    padding: 30px;
+    background: #1b1b1b;
+    border: 1px solid #303030;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+.student-card:hover {
+    transform: translateY(-5px);
+    border-color: #555;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+/* Фото */
+.student-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 15px;
+    background: #222;
+}
+.student-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: 0.5s;
+}
+.student-card:hover .student-photo img {
+    transform: scale(1.05);
+}
+/* Информация */
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background: #292929;
+    color: #aaa;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.student-info h2 {
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+.role {
+    color: #888;
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+.facts {
+    border-top: 1px solid #333;
+    padding-top: 15px;
+}
+.facts p {
+    margin: 8px 0;
+    color: #bbb;
+}
+.facts strong {
+    color: #eee;
+}
+/* =========================
+   ЧЕРЕДОВАНИЕ КАРТОЧЕК
+========================= */
+.student-card.reverse {
+    grid-template-columns: 1fr 350px;
+}
+.student-card.reverse .student-photo {
+    order: 2;
+}
+.student-card.reverse .student-info {
+    order: 1;
+}
+/* =========================
+   ГАЛЕРЕЯ
+========================= */
+.gallery-section {
+    padding: 100px 0;
+}
+.gallery-section h2 {
+    text-align: center;
+}
+.gallery-description {
+    text-align: center;
+    color: #888;
+    margin-bottom: 40px;
+}
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+.gallery-item {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #222;
+}
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: 0.5s;
+}
+.gallery-item span {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 35px 15px 15px;
+    background: linear-gradient(
+        transparent,
+        rgba(0, 0, 0, 0.9)
+    );
+    color: white;
+    transform: translateY(100%);
+    transition: 0.3s;
+}
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+.gallery-item:hover span {
+    transform: translateY(0);
+}
+/* =========================
+   FOOTER
+========================= */
+.footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid #333;
+    color: #666;
+    font-size: 14px;
+}
+.footer p:first-child {
+    color: #aaa;
+    margin-bottom: 5px;
+}
+/* =========================
+   АДАПТАЦИЯ ПОД ТЕЛЕФОН
+========================= */
+@media (max-width: 800px) {
+    .header {
+        min-height: 350px;
+    }
+    .header h1 {
+        letter-spacing: 4px;
+    }
+    .student-card,
+    .student-card.reverse {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 20px;
+    }
+    .student-card.reverse .student-photo {
+        order: 1;
+    }
+    .student-card.reverse .student-info {
+        order: 2;
+    }
+    .student-info h2 {
+        font-size: 30px;
+    }
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .gallery-item {
+        height: 200px;
+    }
+}
+@media (max-width: 500px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+    .gallery-item {
+        height: 250px;
+    }
+    .intro {
+        padding-top: 50px;
+    }
+}
